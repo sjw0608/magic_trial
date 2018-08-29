@@ -10,8 +10,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: _import('home/home'),
+      meta: {
+        title: '首页',
+        auth: false
+      }
     },
     {
       path: '/login',

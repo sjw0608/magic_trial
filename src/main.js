@@ -5,6 +5,7 @@ import { AlertPlugin, ConfirmPlugin, ToastPlugin, CloseDialogsPlugin } from 'vux
 import FastClick from 'fastclick'
 import App from './App'
 import router from './router'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import store from './store'
 
 window.MODE_BRANCH = process.env.MODE_BRANCH
@@ -14,8 +15,10 @@ Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
 Vue.use(ToastPlugin)
 Vue.use(CloseDialogsPlugin, router)
+Vue.use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false
+import 'swiper/dist/css/swiper.css'
 
 /* eslint-disable no-new */
 new Vue({
