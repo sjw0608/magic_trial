@@ -3,7 +3,7 @@
     <!-- slides -->
     <template v-for="item in sliderGoods">
       <swiper-slide>
-        <router-link class="indexProRecommendPart" :key="item.id" :to="{name:''}">
+        <router-link class="indexProRecommendPart" :key="item.id" :to="{name:'GoodsDetail',params:{gid:item.id}}">
           <div class="co">
             <div class="a1">
               <img :src="item.thumb" alt="">

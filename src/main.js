@@ -8,6 +8,8 @@ import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import store from './store'
 
+import './assets/font/iconfont.css'
+
 window.MODE_BRANCH = process.env.MODE_BRANCH
 FastClick.attach(document.body)
 

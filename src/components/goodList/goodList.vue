@@ -1,7 +1,7 @@
 <template>
   <div class="good-list">
     <template v-for="goods in goodsList">
-      <router-link class="good-item" :key="goods.id" :to="{name:''}">
+      <router-link class="good-item" :key="goods.id" :to="{name:'GoodsDetail',params:{gid:goods.id}}">
         <div class="co">
           <div class="a1">
             <img :src="goods.thumb" alt="">

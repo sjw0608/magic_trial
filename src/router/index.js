@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+import Navigation from '@/page/navigation/navigation'
 const _import = require('./_import')
 
 Vue.use(Router)
@@ -10,10 +9,50 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: _import('home/home'),
+      component: Navigation,
+      children: [
+        {
+          path: '',
+          alias: '/home',
+          name: 'Home',
+          component: _import('home/home'),
+          meta: {
+            title: '首页',
+            auth: false
+          }
+        },
+        {
+          path: '/trial',
+          name: 'Trial',
+          component: _import('trial/trial'),
+          meta: {
+            auth: false
+          }
+        },
+        {
+          path: '/progress',
+          name: 'Progress',
+          component: _import('progress/progress'),
+          meta: {
+            auth: false
+          }
+        },
+        {
+          path: '/user',
+          name: 'User',
+          component: _import('user/user'),
+          meta: {
+            auth: false
+          }
+        }
+      ]
+    },
+    {
+      path: '/goodsDetail/:gid',
+      name: 'GoodsDetail',
+      component: _import('goodsDetail/goodsDetail'),
       meta: {
-        title: '首页',
+        title: '商品详情',
         auth: false
       }
     },
