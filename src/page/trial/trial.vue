@@ -3,13 +3,8 @@
       :data="sliderGoods"
       :pullUpLoad="pullUpLoadObj"
       @pullingUp="onPullingUp">
-      <tab>
-        <tab-item selected @on-item-click="onItemClick">默认</tab-item>
-        <tab-item @on-item-click="onItemClick">人气</tab-item>
-        <tab-item @on-item-click="onItemClick">价值</tab-item>
-        <tab-item @on-item-click="onItemClick">时间</tab-item>
-      </tab>
       <trial-list :trialItem="trialItem"></trial-list>
+      <div style="height:50px;"></div>
     </scroll>
 
 </template>
@@ -57,9 +52,6 @@ export default {
     }
   },
   methods: {
-    onItemClick(index) {
-      console.log(index)
-    },
     onPullingUp() {
       if (this.more) {
       } else {

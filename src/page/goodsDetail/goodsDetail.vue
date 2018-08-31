@@ -120,6 +120,7 @@
 import Scroll from '../../components/scroll/scroll'
 import Banner from '../../components/scroll/bannerItem'
 import { Tab, TabItem } from 'vux'
+import { countDown } from '@/utils/setTime'
 export default {
   components: {
     Scroll,
@@ -166,6 +167,7 @@ export default {
         apply_people: '2',
         catid: '67',
         end_time: '1535962260',
+        start_time: '1534962260',
         finish_people: '0',
         goods_bonus: '0.00',
         goods_deposit: '2290.00',
@@ -186,6 +188,7 @@ export default {
 <p><br/>
 </p>`
       }
+      console.log(countDown(this.goodsDetail.start_time, this.goodsDetail.end_time))
     }
   }
 }
