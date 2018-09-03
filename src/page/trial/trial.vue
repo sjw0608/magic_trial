@@ -29,10 +29,12 @@ export default {
       sliderGoods: [],
       goodsList: [],
       more: false,
-      trialItem: []
+      trialItem: [],
+      index: '0'
     }
   },
   created() {
+    this.$bus.on('tagIndex', this.tagIndex)
     this.getItem()
   },
   watch: {
@@ -291,6 +293,9 @@ export default {
           title: 'gingham 迷你皮革包包'
         }
       ]
+    },
+    tagIndex(index) {
+      this.index = index
     }
   }
 }

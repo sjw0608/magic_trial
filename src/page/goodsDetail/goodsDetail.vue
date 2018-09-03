@@ -105,10 +105,15 @@
     </div>
     <div style="height:50px"></div>
     <div class="i_tryout_s_part4">
-      <div class="last_time">
+      <div class="last_time" v-if="t_time">
         <span >剩余:</span>
-        <span> <i  style="color: #fff;" :id="goodsDetail.end_time">{{goodsDetail.end_time }}</i></span></div>
-        <a  class="a1 right_free">免费申请</a>
+        <span> <i  style="color: #fff;" :id="goodsDetail.end_time">{{t_time}}</i></span>
+      </div>
+      <div class="last_time" v-else>
+        <span >已结束</span>
+        <!-- <span> <i  style="color: #fff;" :id="goodsDetail.end_time">{{t_time}}</i></span> -->
+      </div>
+      <a  class="a1 right_free">免费申请</a>
       <!-- <div ng-if="order_is_join.data == 1 && showdata.number > 0&&Member_group == 2 " class="vip">
         <a ng-click="vip_Apply_trial()" ng-show=" Member_group == 2&& showdata.goods_vipfree == 1">vip试用</a>
       </div> -->
@@ -131,15 +136,16 @@ export default {
   data() {
     return {
       Switch: 0,
-      goodsDetail: {}
+      goodsDetail: {},
+      t_time: ''
     }
   },
   created() {
     this.getGoodsDetail()
   },
+  watch: {},
   methods: {
     onItemClick(index) {
-      console.log(index)
       this.Switch = index
     },
     getGoodsDetail() {
@@ -188,7 +194,19 @@ export default {
 <p><br/>
 </p>`
       }
-      console.log(countDown(this.goodsDetail.start_time, this.goodsDetail.end_time))
+
+      this.getSetTime(this.goodsDetail.start_time, this.goodsDetail.end_time)
+    },
+    getSetTime(start, end) {
+      var timer
+      var self = this
+      if (end - Math.round(new Date().getTime() / 1000) < 0) {
+        return
+      } else {
+        timer = setInterval(function() {
+          self.t_time = countDown(start, end)
+        }, 1000)
+      }
     }
   }
 }

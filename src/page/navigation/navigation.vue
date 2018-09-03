@@ -16,7 +16,7 @@
 
     <router-view />
 
-    <tabbar v-if="!showmenu">
+    <tabbar>
       <tabbar-item :selected="name === 'Home'" link="/">
         <i slot="icon" class="iconfont icon-home-"></i>
         <span slot="label">首页</span>
@@ -40,6 +40,7 @@
 <script>
 import { Tabbar, TabbarItem, ViewBox, Tab, TabItem } from 'vux'
 export default {
+  name: 'Navigation',
   components: {
     Tab,
     TabItem,
@@ -54,15 +55,18 @@ export default {
       showmenu: ''
     }
   },
+
   watch: {
     $route(route) {
       this.name = route.name
     }
   },
-  created() {},
+  created() {
+    this.name = this.$route.name
+  },
   methods: {
     onItemClick(index) {
-      console.log(index)
+      this.$bus.emit('tagIndex', { index: index })
     }
   }
 }

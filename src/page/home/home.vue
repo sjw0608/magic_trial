@@ -27,6 +27,7 @@ import SliderGood from '../../components/scroll/goodsBanner'
 import Banner from '../../components/scroll/bannerItem'
 import GoodsList from '../../components/goodList/goodsItem'
 export default {
+  name: 'Home',
   components: {
     Scroll,
     SliderGood,
