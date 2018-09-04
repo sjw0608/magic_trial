@@ -59,12 +59,43 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: _import('login/login')
+      component: _import('login/login'),
+      meta: {
+        title: '登录'
+      }
     },
     {
       path: '/register',
       name: 'Register',
-      component: _import('register/index')
+      component: _import('register/index'),
+      meta: {
+        title: '注册'
+      }
+    },
+    {
+      path: '/user_announce_show',
+      Name: 'UserAnnounceShow',
+      component: _import('user/user_announce_show'),
+      meta: {
+        title: '我的消息'
+      }
+    },
+    {
+      path: '/user_profile',
+      Name: 'UserProfile',
+      component: _import('setting/user_profile'),
+      meta: {
+        title: '设置',
+        auth: true
+      }
+    },
+    {
+      path: '/other',
+      Name: 'Other',
+      component: _import('user/other'),
+      meta: {
+        title: '更多'
+      }
     }
   ]
 })

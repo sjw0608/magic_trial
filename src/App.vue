@@ -21,4 +21,7 @@ export default {
 @import '~vux/src/styles/close.less';
 @import './style/variable.less';
 @import './style/index.less';
+body {
+  background-color: #fff;
+}
 </style>

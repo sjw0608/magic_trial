@@ -1,5 +1,6 @@
 <template>
-  <div class="user">
+  <scroller lock-x  @on-scroll="onScroll">
+   <div class="user">
     <div v-if= "login">
       <div class="user-signOn_header">
         <div class="signOn_logo">
@@ -23,20 +24,59 @@
         <a>每日签到</a>
       </div>
     </div>
-  </div>
+
+    <div class="user-signIn_account">
+      <div class="user-account_blance">
+        <span>$999999</span>
+        <span>账户余额</span>
+      </div>
+      <div class="user-account_blance">
+        <span>99999999</span>
+        <span>我的积分</span>
+      </div>
+    </div>
+
+    <router-link :to="{name:'Progress'}" class="item item-icon-left item-icon-right " style="color:#fd3636; padding-left: 45px;border-top:1px solid #ededed">
+      <i class="icon iconfont icon-gouwuche"></i>
+      <h3>我的试用</h3>
+    </router-link>
+    <router-link :to="{path:'/user_announce_show'}"  class="item item-icon-left item-icon-right " style="color:#73bbee; padding-left: 45px;">
+      <i class="icon iconfont icon-xiaoxi"></i>
+      <h3>我的消息</h3>
+    </router-link >
+    <router-link :to="{path:'/user_profile'}"  class="item item-icon-left item-icon-right " style="color:#5091ff; padding-left: 45px;">
+      <i class="icon iconfont icon-shezhi-tianchong"></i>
+      <h3>设置</h3>
+    </router-link >
+    <router-link :to="{path:'/other'}" class="item item-icon-left item-icon-right " style="color:#18181a; padding-left: 45px;">
+      <i class="icon iconfont icon-gengduomore12" ></i>
+      <h3>更多</h3>
+    </router-link >
+   </div>
+  </scroller>
 </template>
 
 <script>
+import { Scroller } from 'vux'
 export default {
+  components: {
+    Scroller
+  },
   data() {
     return {
+      scrollTop: 0,
       login: false
+    }
+  },
+  methods: {
+    onScroll(pos) {
+      this.scrollTop = pos.top
     }
   }
 }
 </script>
 
-<style lang='less' scoper>
+<style lang='less' scoped>
 .user-signOn_header {
   width: 100%;
   height: 120px;
@@ -112,6 +152,68 @@ export default {
       color: #fff;
       font-size: 14px;
     }
+  }
+}
+.user-signIn_account {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 1px;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  margin-bottom: 10px;
+  .user-account_blance {
+    width: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    text-align: center;
+    color: #666;
+    background-color: #fff;
+    &:first-child {
+      border-right: 1px solid #ededed;
+    }
+    span {
+      display: block;
+      font-size: 14px;
+      &:first-child {
+        color: #e41436;
+        font-size: 20px;
+        margin-bottom: -6px;
+      }
+    }
+  }
+}
+.item {
+  background-color: #fff;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ededed;
+  box-sizing: border-box;
+  .icon {
+    &::before {
+      display: block;
+      width: 32px;
+      text-align: center;
+    }
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 11px;
+  }
+  h3 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
   }
 }
 </style>

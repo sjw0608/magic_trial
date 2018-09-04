@@ -71,3 +71,15 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+.weui-tabbar {
+  .weui-tabbar__icon {
+    width: 28px !important;
+    height: 24px !important;
+    & > i {
+      font-size: 20px;
+    }
+  }
+}
+</style>
